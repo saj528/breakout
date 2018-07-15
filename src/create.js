@@ -26,7 +26,13 @@ module.exports.create = function create() {
 
   for (let y = 1; y < ROWS; y++){
     for (let x = 1; x < WIDTH/(BRICK_WIDTH+5); x++){
-      createBrick.call(this,(x*BRICK_WIDTH)+(x*5),(y*BRICK_HEIGHT)+(y*5));
+      if (y <= 5){
+        createBrick.call(this,(x*BRICK_WIDTH)+(x*5),(y*BRICK_HEIGHT)+(y*5),('brick_strong'));
+      } else if (y <= 15){
+        createBrick.call(this,(x*BRICK_WIDTH)+(x*5),(y*BRICK_HEIGHT)+(y*5),('brick'));
+      } else {
+        createBrick.call(this,(x*BRICK_WIDTH)+(x*5),(y*BRICK_HEIGHT)+(y*5),('brick_weak'));
+      }
     }
   }
   setupPaddleControls.call(this);

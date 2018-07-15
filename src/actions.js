@@ -1,3 +1,10 @@
 module.exports.ballHitBrick = function ballHitBrick(ball, brick) {
-  brick.destroy();
+  if (brick.texture.key === 'brick_strong'){
+    brick.setTexture('brick');
+  } else if (brick.texture.key === 'brick'){
+    brick.setTexture('brick_weak');
+  }  
+  else{
+    brick.destroy();
+  }
 }

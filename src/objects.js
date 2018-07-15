@@ -30,9 +30,9 @@ module.exports.createPaddle = function createPaddle() {
     .setImmovable(true);
 }
 
-module.exports.createBrick = function createBrick(x, y) {
+module.exports.createBrick = function createBrick(x, y,bric='brick') {
   const brick = this.physics.add
-    .sprite(x, y, 'brick')
+    .sprite(x, y, bric)
     .setOrigin(0.5, 0.5)
     .setDisplaySize(BRICK_WIDTH, BRICK_HEIGHT)
     .setCollideWorldBounds(true)
