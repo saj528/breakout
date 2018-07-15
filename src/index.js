@@ -22,8 +22,8 @@ module.exports = new Phaser.Game({
     update,
     extend: {
       ball: null,
-      Paddle: null,
-      Brick: null
+      paddle: null,
+      bricks: []
     },
   },
 });

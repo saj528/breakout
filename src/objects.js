@@ -1,4 +1,4 @@
-const { increaseBallVelocity } = require('./actions');
+const { ballHitBrick } = require('./actions');
 
 const {
   WIDTH,
@@ -7,10 +7,6 @@ const {
   BRICK_HEIGHT,
   BRICK_WIDTH,
 } = require('./constants');
-
-function ballHitBrick(ball, brick) {
-  brick.kill();
-}
 
 module.exports.createBall = function createBall() {
   this.ball = this.physics.add
@@ -22,11 +18,11 @@ module.exports.createBall = function createBall() {
   this.ball.body.setVelocityX(-BALL_SPEED);
   this.ball.body.setVelocityY(BALL_SPEED);
 
-  this.physics.add.collider(this.Paddle, this.ball);
+  this.physics.add.collider(this.paddle, this.ball);
 }
 
 module.exports.createPaddle = function createPaddle() {
-  this.Paddle = this.physics.add
+  this.paddle = this.physics.add
     .sprite(400, 570, 'paddle')
     .setOrigin(0.5, 0.5)
     .setDisplaySize(104, 24)
@@ -34,12 +30,13 @@ module.exports.createPaddle = function createPaddle() {
     .setImmovable(true);
 }
 
-module.exports.createBrick = function createBrick(x_cord,y_cord) {
-  this.Brick = this.physics.add
-    .sprite(x_cord, y_cord, 'brick')
+module.exports.createBrick = function createBrick(x, y) {
+  const brick = this.physics.add
+    .sprite(x, y, 'brick')
     .setOrigin(0.5, 0.5)
     .setDisplaySize(BRICK_WIDTH, BRICK_HEIGHT)
     .setCollideWorldBounds(true)
     .setImmovable(true);
-    this.physics.add.collider( this.ball, this.Brick, this.ballHitBrick);
+  this.bricks.push(brick);
+  this.physics.add.collider(this.ball, brick, ballHitBrick);
 }
