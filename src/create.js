@@ -1,4 +1,4 @@
-const { 
+const {
   HEIGHT,
   WIDTH,
   BRICK_HEIGHT,
@@ -23,11 +23,9 @@ module.exports.create = function create() {
 
   createPaddle.call(this);;
   createBall.call(this);
-  
-  var y;
-  for (y = 1; y < ROWS; y++){
-    var x;
-    for (x = 1; x < WIDTH/(BRICK_WIDTH+5); x++){
+
+  for (let y = 1; y < ROWS; y++){
+    for (let x = 1; x < WIDTH/(BRICK_WIDTH+5); x++){
       createBrick.call(this,(x*BRICK_WIDTH)+(x*5),(y*BRICK_HEIGHT)+(y*5));
     }
   }

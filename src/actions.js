@@ -1,3 +1,3 @@
-module.exports.increaseBallVelocity = function increaseBallVelocity() {
-  this.ball.body.velocity.scale(1.4, 1.4);
+module.exports.ballHitBrick = function ballHitBrick(ball, brick) {
+  brick.destroy();
 }
